@@ -1,5 +1,7 @@
 # ProtoGen
 
+[![CI for ProtoGen](https://github.com/FlareCoding/protogen/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/FlareCoding/protogen/actions/workflows/ci.yml)
+
 ProtoGen is a command-line tool designed to simplify the setup of C and C++ projects. It provides a straightforward way to generate project templates, manage components, and integrate build systems like Makefile and CMake. With ProtoGen, developers can quickly scaffold their projects and focus on coding rather than configuration.
 
 ## Table of Contents
