@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include "commands/init.h"
+
 // Function declarations
 void print_general_usage();
 void print_init_usage();
@@ -71,7 +73,7 @@ void print_init_usage() {
     printf("Options:\n");
     printf("  %-28s %s (default: %s)\n", "--lang <c|cpp>", "Specifies the programming language (C or C++).", "c");
     printf("  %-28s %s (default: %s)\n", "--type <binary|library>", "Specifies the main type of project (executable or library).", "binary");
-    printf("  %-28s %s (default: %s)\n", "--build-system <make|cmake>", "Chooses the build system (Makefile or CMake).", "Makefile");
+    printf("  %-28s %s (default: %s)\n", "--build-system <make|cmake>", "Chooses the build system (make or cmake).", "make");
     printf("  %-28s %s (default: %s)\n", "--output-dir <directory>", "Specifies the output directory for the project.", "./");
     printf("\n");
 }
@@ -91,7 +93,7 @@ void handle_init(int argc, char *argv[]) {
     const char *project_name = NULL;
     const char *lang = "c";
     const char *type = "binary";
-    const char *build_system = "Makefile";
+    const char *build_system = "make";
     const char *output_dir = "./";
 
     for (int i = 1; i < argc; i++) {
@@ -123,7 +125,7 @@ void handle_init(int argc, char *argv[]) {
     printf("Build System: %s\n", build_system);
     printf("Output Directory: %s\n", output_dir);
 
-    // Call to a function that will actually create the project (to be implemented)
+    initialize_project(project_name, lang, type, build_system, output_dir);
 }
 
 // Function to handle the 'add' command
