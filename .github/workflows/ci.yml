@@ -1,0 +1,38 @@
+name: CI for ProtoGen
+
+# Triggers the workflow on push or pull request events on the main branch
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu environment for the job
+    
+    steps:
+      # Check out the repository to the GitHub Actions runner
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      # Install required dependencies
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc make  # Install GCC and Make
+
+      # Compile the ProtoGen project
+      - name: Build ProtoGen
+        run: |
+          make
+      
+      # Run ProtoGen with a test command to ensure it runs (initial basic check)
+      - name: Run Basic Test
+        run: |
+          ./build/protogen --version
+      
+      # Placeholder for running unit tests (to be implemented later)
+      - name: Run Unit Tests
+        run: |
+          echo "No unit tests implemented yet."  # Replace this with actual test commands later
